@@ -259,7 +259,6 @@ class RQDataCollectorCN(RQDataCollector, ABC):
         delisted_instruments['de_listed_date'] = delisted_instruments['de_listed_date'].apply(pd.Timestamp)
         delisted_symbol = delisted_instruments[delisted_instruments['de_listed_date'] > self.start_datetime]
         delisted_symbols = delisted_symbol['order_book_id'].tolist()
-        logger.info(f"delisted_symbols: {delisted_symbols}")
         symbols = active_symbols + delisted_symbols
         
         logger.info(f"get {len(symbols)} symbols.")
